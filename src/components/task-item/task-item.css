@@ -1,0 +1,19 @@
+.list-item__item {
+	display: flex;
+	align-items: center;
+}
+.list-item__item:first-child {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.list-item__text {
+	margin-right: auto;
+}
+
+.action__button {
+	margin: 5px;
+}
+
+.create-new__form {
+	width: 100%;
+}

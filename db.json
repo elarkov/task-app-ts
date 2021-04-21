@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "D2T2",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "login": "D3T3",
+      "password": "123"
+    },
+    {
+      "login": "DR3DT2",
+      "password": "321",
+      "id": 3
+    },
+    {
+      "login": "DT34RT",
+      "password": "qwerty",
+      "id": 4
+    },
+    {
+      "login": "Владимир",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "login": "D4T4",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "login": "D4D5",
+      "password": "123",
+      "id": 7
+    }
+  ],
+  "tasks": [
+    {
+      "text": "sdfdsfds",
+      "user_id": "4",
+      "id": 8
+    },
+    {
+      "text": "Прыгнуть с парашюта",
+      "user_id": 4,
+      "id": 9
+    },
+    {
+      "text": "Поехатть в новосиб",
+      "user_id": 4,
+      "id": 12
+    },
+    {
+      "text": "Посетить Фудзиму",
+      "user_id": 3,
+      "isComplete": false,
+      "id": 14
+    },
+    {
+      "text": "Посмотреть на цветение Сакуры",
+      "user_id": 3,
+      "isComplete": false,
+      "id": 15
+    },
+    {
+      "text": "Поехать в японию",
+      "user_id": 1,
+      "isComplete": true,
+      "id": 16
+    },
+    {
+      "text": "Посетить гору Фудзима",
+      "user_id": 1,
+      "isComplete": false,
+      "id": 17
+    },
+    {
+      "text": "sdfdsf",
+      "user_id": 1,
+      "isComplete": false,
+      "id": 18
+    },
+    {
+      "id": 19,
+      "text": "Поехать в Гренландию",
+      "user_id": 2,
+      "isComplete": true
+    },
+    {
+      "text": "Записаться на треннинг",
+      "user_id": 2,
+      "isComplete": false,
+      "id": 20
+    },
+    {
+      "text": "Поехать в горы",
+      "user_id": 2,
+      "isComplete": false,
+      "id": 21
+    },
+    {
+      "text": "task",
+      "user_id": 2,
+      "isComplete": true,
+      "id": 22
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+.create-new {
+	flex: 1;
+}
+.create-new__form {
+	display: flex;
+	align-items: center;
+}
+
+.create-new__input {
+	border-radius:0;
+	border:0;
+}
+
+.create-new__button {
+	border-radius:0;
+}
+
