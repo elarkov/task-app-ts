@@ -1,7 +1,6 @@
 import React from "react";
-import {getUsers, addUser} from '../api/server-users.js';
 
-import SignUp from '../components/sign-up/sign-up.js';
+import SignUp from '../components/sign-up/sign-up';
 
 
 const Registr = () => {

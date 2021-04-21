@@ -5,17 +5,17 @@ import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 /**import stores for mobx */
-import { tasksStore } from "../tasks-store.js";
-import { usersStore } from '../users-store.js';
+import { tasksStore } from "../tasks-store";
+import { usersStore } from '../users-store';
 
 /**import server requests */
-import { addTask } from '../api/server.js';
+import { addTask } from '../api/server';
 
 /**import components */
-import TasksSearch from '../components/tasks-search/tasks-search.js';
-import CreateTask from '../components/create-task/create-task.js';
-import TasksDetails from '../components/tasks-details/tasks-details.js';
-import TasksFilter from '../components/tasks-filter/tasks-filter.js';
+import TasksSearch from '../components/tasks-search/tasks-search';
+import CreateTask from '../components/create-task/create-task';
+import TasksDetails from '../components/tasks-details/tasks-details';
+import TasksFilter from '../components/tasks-filter/tasks-filter';
 
 /**import styles component */
 import '../components/app/app.css';

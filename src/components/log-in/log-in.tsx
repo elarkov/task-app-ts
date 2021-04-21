@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { observer } from 'mobx-react-lite';
-import {usersStore} from '../../users-store.js';
+import {usersStore} from '../../users-store';
 
-import {Link} from '../../router.js';
+import {Link} from '../../router';
 
 import './log-in.css';
 

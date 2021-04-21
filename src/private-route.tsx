@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from './router.js';
+import {Redirect} from './router';
 
 
 

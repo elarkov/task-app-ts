@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store.js";
+import { tasksStore } from "../../tasks-store";
 
-import {updateTask, deleteTask } from '../../api/server.js';
+import {updateTask, deleteTask } from '../../api/server';
 
 import './task-item.css';
 

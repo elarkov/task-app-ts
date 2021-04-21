@@ -1,7 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import {getUsers, addUser} from './api/server-users.js';
+import {getUsers, addUser} from './api/server-users';
 
-import history from './history.js';
+import history from './history';
+
+
 
 class UsersStore {
 	currentUser = null

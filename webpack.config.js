@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/index.tsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
@@ -11,11 +12,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js|jsx)x?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+					options: {
+						presets: [
+							"@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+						],
+					},
+        },
       },
       {
         test: /\.html$/,
@@ -31,6 +39,9 @@ module.exports = {
       },
     ]
   },
+	resolve: {
+		extensions: [".tsx", ".ts", ".js", ".css"],
+	},
 	devServer: {
     historyApiFallback: true,
   },
@@ -38,6 +49,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
+    }),
+		new ForkTsCheckerWebpackPlugin({
+      async: false,
+      eslint: {
+        files: "./src/**/*",
+      },
+    }),
   ]
 };

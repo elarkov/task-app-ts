@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store.js";
+import { tasksStore } from "../../tasks-store";
 
 import './create-task.css';
 

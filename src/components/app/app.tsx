@@ -1,13 +1,13 @@
 import React from "react";
 
-import {Router, Switch, Route} from '../../router.js';
+import {Router, Switch, Route} from '../../router';
 
-import history from '../../history.js';
-import PrivateRoute from './../../private-route.js';
+import history from '../../history';
+import PrivateRoute from '../../private-route';
 
-import Dashboard from '../../pages/dashboard.js';
-import Registr from '../../pages/registr.js';
-import Login from '../../pages/login.js';
+import Dashboard from '../../pages/dashboard';
+import Registr from '../../pages/registr';
+import Login from '../../pages/login';
 
 
 

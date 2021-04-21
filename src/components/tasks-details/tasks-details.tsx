@@ -1,11 +1,11 @@
 import React from 'react';
-import TaskItem from './../task-item';
+import TaskItem from '../task-item';
 
 import './tasks-details.css';
 
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store.js";
+import { tasksStore } from "../../tasks-store";
 
 const TasksDetails = observer(() => {
 
