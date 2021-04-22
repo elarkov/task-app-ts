@@ -1,10 +1,12 @@
+import {User} from '../types/data';
+
 const getUsers = async() => {
 	const response = await fetch('http://localhost:3000/users')
 	const result = await response.json();
 	return result;
 };
 
-const addUser = (formData, onSuccess) => {
+const addUser = (formData: { login: any; password: any; }, onSuccess: any) => {
 	fetch('http://localhost:3000/users', 
 		{
 			method: 'POST',

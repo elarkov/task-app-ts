@@ -34,6 +34,11 @@
       "login": "D4D5",
       "password": "123",
       "id": 7
+    },
+    {
+      "login": "German",
+      "password": "123",
+      "id": 8
     }
   ],
   "tasks": [
@@ -85,26 +90,29 @@
     {
       "id": 19,
       "text": "Поехать в Гренландию",
-      "user_id": 2,
+      "isComplete": false
+    },
+    {
+      "id": 21,
+      "text": "Поехать в горы",
       "isComplete": true
     },
     {
-      "text": "Записаться на треннинг",
-      "user_id": 2,
-      "isComplete": false,
-      "id": 20
-    },
-    {
-      "text": "Поехать в горы",
-      "user_id": 2,
-      "isComplete": false,
-      "id": 21
-    },
-    {
+      "id": 22,
       "text": "task",
+      "isComplete": false
+    },
+    {
+      "id": 24,
+      "text": "ефыл333",
       "user_id": 2,
-      "isComplete": true,
-      "id": 22
+      "isComplete": false
+    },
+    {
+      "id": 25,
+      "text": "taskdsf",
+      "user_id": 2,
+      "isComplete": false
     }
   ]
 }

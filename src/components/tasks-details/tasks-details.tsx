@@ -7,13 +7,16 @@ import './tasks-details.css';
 import { observer } from "mobx-react-lite";
 import { tasksStore } from "../../tasks-store";
 
-const TasksDetails = observer(() => {
+import {Task} from '../../types/data';
+
+const TasksDetails: React.FC = observer(() => {
 
 	const {filterTasks} = tasksStore;
 
-		const tasksList = filterTasks.map((el) => 
+		const tasksList = filterTasks.map((el: Task) => 
+		
 			<li key={el.id} className="list-item__item list-group-item">
-				<TaskItem task={el} />
+				<TaskItem task={el}/> 
 			</li>
 		);
 

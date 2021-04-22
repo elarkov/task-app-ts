@@ -8,7 +8,7 @@ import {Link} from '../../router';
 import './sign-up.css';
 
 
-const SignUp = observer (() => {
+const SignUp: React.FC = observer (() => {
 
 	const {handleSubmit} = usersStore;
 

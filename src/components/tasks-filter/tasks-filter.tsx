@@ -6,7 +6,7 @@ import { tasksStore } from "../../tasks-store";
 import './tasks-filter.css';
 
 
-const TasksFilter = observer(() => {
+const TasksFilter: React.FC = observer(() => {
 
 	const {handleSortTasksAll, handleSortTaskUnComplete, handleSortTasksDone} = tasksStore;
 

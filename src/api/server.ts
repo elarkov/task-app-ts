@@ -1,3 +1,5 @@
+import {Task, NewTask} from '../types/data';
+
 /**Делаем запрос к серверу */
 const getTasks = async () => {
 	const response = await fetch('http://localhost:3000/tasks');
@@ -6,7 +8,7 @@ const getTasks = async () => {
 };
 
 /*Добавляем заметку в БД*/
-const addTask = (formData, onSuccess) => {
+const addTask = (formData: NewTask, onSuccess: { (): void; }): void => {
 	fetch('http://localhost:3000/tasks', 
 	{
 		method: 'POST',
@@ -22,7 +24,7 @@ const addTask = (formData, onSuccess) => {
 }
 
 /**Обновляем заметку в БД после редактирования */
-const updateTask = (id, formData, onDone) => {
+const updateTask = (id: number, formData: Task, onDone: { (): void; }): void => {
 	fetch('http://localhost:3000/tasks/' + id, {
 		method: 'PUT',
 		headers: {
@@ -37,7 +39,7 @@ const updateTask = (id, formData, onDone) => {
 }
 
 /**Удаляем заметку из БД */
-const deleteTask = (id) => {
+const deleteTask = (id: Task): void => {
 	fetch('http://localhost:3000/tasks/' + id, {
 		method: 'DELETE'
 	}).then(res => {

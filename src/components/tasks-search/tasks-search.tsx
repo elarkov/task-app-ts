@@ -6,7 +6,7 @@ import { tasksStore } from "../../tasks-store";
 import './tasks-search.css';
 
 
-const TasksSearch = observer(() => {
+const TasksSearch: React.FC = observer(() => {
 
 	const {searchItem} = tasksStore;
 

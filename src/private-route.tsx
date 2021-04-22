@@ -3,7 +3,7 @@ import {Redirect} from './router';
 
 
 
-class PrivateRoute extends React.Component {
+class PrivateRoute extends React.Component<{component: any}> {
 
 	render() {
 		const Component = this.props.component;

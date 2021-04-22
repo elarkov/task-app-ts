@@ -6,13 +6,13 @@ import { tasksStore } from "../../tasks-store";
 import {updateTask, deleteTask } from '../../api/server';
 
 import './task-item.css';
+import * as CSS from 'csstype';
 
-const TaskItem = observer(({task}) => {
+const TaskItem: React.FC  = observer(({task}) => {
 
-	/**хуки для работы с внутренним стейтом */
 	const [isEdit, setIsEdit] = useState(false);
-	const [value, setValue] = useState(null);
-	const [isComplete, setIsComplete] = useState(false);
+	const [value, setValue] = useState('');
+	//const [isComplete, setIsComplete] = useState(false);
 
 	const {removeItem, getTaskList } = tasksStore;
 
@@ -25,14 +25,14 @@ const TaskItem = observer(({task}) => {
 		setIsEdit(!isEdit);
 	}
 
-	const handleSave = (evt) => {
+	const handleSave: React.MouseEventHandler = (evt) => {
 		evt.preventDefault();
 
 		const idUser = localStorage.getItem('user_id');
 
 		const newTask = {
 			id: task.id,
-			text: evt.target.parentElement.elements.text.value,
+			text: (evt.target as any).parentElement.elements.text.value,
 			user_id: Number(idUser),
 			isComplete: false
 		};
@@ -42,7 +42,7 @@ const TaskItem = observer(({task}) => {
 		updateTask(newTask.id, newTask, getTaskList);
 	}
 
-	const onInputEditChange = (value) => {
+	const onInputEditChange = (value: string) => {
 		setValue(value)
 	}
 
@@ -55,20 +55,24 @@ const TaskItem = observer(({task}) => {
 
 	const handleOnClickItem = () => {
 
-		const currentState = setIsComplete(isComplete);
+		// const currentState = setIsComplete(isComplete);
 
 		const newTask = {
 			...task,
 			isComplete: !task.isComplete
 		}
 
-		setIsComplete(!currentState)
+		// setIsComplete(!currentState)
 
 		updateTask(task.id, newTask, getTaskList);
 	}
 
-	const styleLineThough = {
-		textDecoration: task.isComplete ? "line-through" : null,
+	const handlerSubmit = () => {
+		return updateTask;
+	}
+
+	const styleLineThough: CSS.Properties = {
+		textDecoration: task.isComplete ? "line-through" : 'none',
 	}
 
 	if (!isEdit) {
@@ -96,7 +100,7 @@ const TaskItem = observer(({task}) => {
 	} else {
 
 		return (
-			<form className="create-new__form" onSubmit={updateTask}>
+			<form className="create-new__form" onSubmit={handlerSubmit}>
 			<input 
 				className="create-new__input form-control" 
 				name="text" 

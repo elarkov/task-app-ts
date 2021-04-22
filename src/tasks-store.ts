@@ -1,24 +1,13 @@
-import React, {MouseEvent, SyntheticEvent} from 'react';
+import React from 'react';
 
 import { makeAutoObservable } from "mobx";
 import { getTasks, addTask } from './api/server';
 
 import history from './history';
 
-interface Task {
-	id: number;
-	text: string;
-	user_id: number;
-	isComplete: boolean
-}
-
-interface Props {
-	tasks: Task[],
-	filterTasks: Task[]
-}
+import { Task } from './types/data';
 
 class TasksStore {
-
 
 	tasks = [];
 	filterTasks = [];
@@ -27,9 +16,7 @@ class TasksStore {
 		makeAutoObservable(this);
 	}
 
-	getTaskList = () => {
-
-
+	getTaskList = (): void => {
 		const id = localStorage.getItem('user_id');
 
 		getTasks()
@@ -42,7 +29,7 @@ class TasksStore {
 		})
 	}
 
-	searchQueryItem = (queryText:string) => {
+	searchQueryItem = (queryText:string): void => {
 		if(queryText) {
 			this.filterTasks = this.tasks.filter((task: Task) => task.text.toLowerCase().includes(queryText.toLowerCase()))
 		} else {
@@ -50,38 +37,40 @@ class TasksStore {
 		}
 	}
 
-	searchItem = (evt:SyntheticEvent) => {
-		this.searchQueryItem((evt.target as HTMLInputElement).value)
+	searchItem: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
+		this.searchQueryItem(evt.target.value)
 	}
 
-	removeItem = (id:number) => {
+	removeItem = (id:number): void => {
 		this.tasks = this.tasks.filter((item: Task) => item.id !== id),
 		this.filterTasks = this.tasks.filter((item: Task) => item.id !== id)
 	}
 
-	handleRemoveUser = (evt:MouseEvent) => {
+	handleRemoveUser: React.MouseEventHandler = (evt) => {
 		evt.preventDefault();
 		localStorage.removeItem('user_id');
 		history.push('/login');
 	}
 
-	handleSortTasksDone = () => {
+	handleSortTasksDone = (): void => {
 		this.filterTasks = this.tasks.filter((item: Task) => item.isComplete === true)
 	}
 
-	handleSortTaskUnComplete = () => {
+	handleSortTaskUnComplete = (): void => {
 		this.filterTasks = this.tasks.filter((item: Task) => item.isComplete === false)
 	}
 
-	handleSortTasksAll = () => {
+	handleSortTasksAll = (): void => {
 		this.filterTasks = this.tasks
 	}
 
+ 
 
-	onSubmit = (evt:MouseEvent) => {
+	onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
 		evt.preventDefault();
 
 		const id = localStorage.getItem('user_id');
+		
 		const newTask = {
 			text: (evt.target as any).elements.text.value,
 			user_id: Number(id),
@@ -89,11 +78,11 @@ class TasksStore {
 		}
 		
 		addTask(newTask, this.getTaskList);
-		(evt.target as HTMLFormElement).reset();
+		(evt.target as any).reset();
 	}
 
 }
 
 const tasksStore = new TasksStore();
 
-export {tasksStore};
+export {TasksStore, tasksStore};

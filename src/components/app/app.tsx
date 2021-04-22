@@ -11,7 +11,7 @@ import Login from '../../pages/login';
 
 
 
-const App = () => {
+const App: React.FC = () => {
 
 	return (
 		<Router history={history}>

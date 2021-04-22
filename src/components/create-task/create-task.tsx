@@ -6,7 +6,7 @@ import { tasksStore } from "../../tasks-store";
 import './create-task.css';
 
 
-const CreateTask = observer(() =>  {
+const CreateTask: React.FC = observer(() =>  {
 
 	const {onSubmit} = tasksStore;
 

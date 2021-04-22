@@ -9,7 +9,7 @@ import { tasksStore } from "../tasks-store";
 import { usersStore } from '../users-store';
 
 /**import server requests */
-import { addTask } from '../api/server';
+//import { addTask } from '../api/server';
 
 /**import components */
 import TasksSearch from '../components/tasks-search/tasks-search';
@@ -21,7 +21,7 @@ import TasksFilter from '../components/tasks-filter/tasks-filter';
 import '../components/app/app.css';
 
 
-const Dashboard = observer(() => {
+const Dashboard: React.FC = observer(() => {
 
 	/** destructuring methods and properties from store tasks-store.js*/
 	const {
@@ -35,23 +35,23 @@ const Dashboard = observer(() => {
 	/**hook a method from tasks-store.js */
 	useEffect(() => {
 		getTaskList()
-	}, []);
+	});
 
 	/**hook a method from users-store.js */
 	useEffect(() => {
 		getListUsers()
-	}, []);
+	});
 
 	return (
 		<div className="content">
 			<div className="content__list">
 				<h3 className="content__header bg-primary">Список задач для {currentUser}</h3>
 				<div className="content__wrapper">
-					<TasksSearch /> 
-					<CreateTask submitHandler={addTask}/>
+					<TasksSearch/> 
+					<CreateTask/>
 					<TasksFilter/>
 				</div>
-				<TasksDetails />
+				<TasksDetails/>
 			</div>
 			<button className="btn btn-danger" onClick={handleRemoveUser}>Выйти</button>
 		</div>
