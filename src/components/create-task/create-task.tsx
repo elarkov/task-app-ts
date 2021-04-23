@@ -17,7 +17,7 @@ const CreateTask: React.FC = observer(() =>  {
 					className="create-new__input form-control" 
 					name="text" 
 					type="text" required
-					placeholder="Поехать в Японию"
+					placeholder="Купить билеты в Японию"
 				/>
 				<button className="create-new__button btn btn-success" type="submit">Добавить</button>
 			</form>

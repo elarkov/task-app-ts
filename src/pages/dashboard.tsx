@@ -20,7 +20,6 @@ import TasksFilter from '../components/tasks-filter/tasks-filter';
 /**import styles component */
 import '../components/app/app.css';
 
-
 const Dashboard: React.FC = observer(() => {
 
 	/** destructuring methods and properties from store tasks-store.js*/
@@ -41,6 +40,8 @@ const Dashboard: React.FC = observer(() => {
 	useEffect(() => {
 		getListUsers()
 	});
+
+	
 
 	return (
 		<div className="content">

@@ -1,7 +1,7 @@
 import {Task, NewTask} from '../types/data';
 
 /**Делаем запрос к серверу */
-const getTasks = async () => {
+const getTasks = async (): Promise<any> => {
 	const response = await fetch('http://localhost:3000/tasks');
 	const res = await response.json();
 	return res;
@@ -39,7 +39,7 @@ const updateTask = (id: number, formData: Task, onDone: { (): void; }): void => 
 }
 
 /**Удаляем заметку из БД */
-const deleteTask = (id: Task): void => {
+const deleteTask = (id: number): void => {
 	fetch('http://localhost:3000/tasks/' + id, {
 		method: 'DELETE'
 	}).then(res => {

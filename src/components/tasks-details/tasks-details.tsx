@@ -16,7 +16,7 @@ const TasksDetails: React.FC = observer(() => {
 		const tasksList = filterTasks.map((el: Task) => 
 		
 			<li key={el.id} className="list-item__item list-group-item">
-				<TaskItem task={el}/> 
+				<TaskItem task={el}/>
 			</li>
 		);
 

@@ -8,17 +8,22 @@ import {updateTask, deleteTask } from '../../api/server';
 import './task-item.css';
 import * as CSS from 'csstype';
 
-const TaskItem: React.FC  = observer(({task}) => {
+import {Task} from '../../types/data';
+
+interface TaskItemProps {
+	task: Task
+}
+
+const TaskItem: React.FC<TaskItemProps> = observer(({task}) => {
 
 	const [isEdit, setIsEdit] = useState(false);
 	const [value, setValue] = useState('');
-	//const [isComplete, setIsComplete] = useState(false);
 
 	const {removeItem, getTaskList } = tasksStore;
 
 	const handleEditClick = () => {
 		setIsEdit(!isEdit);
-		setValue(task.text)
+		setValue(task.text);
 	};
 
 	const handleCancelEdit = () => {
@@ -55,14 +60,10 @@ const TaskItem: React.FC  = observer(({task}) => {
 
 	const handleOnClickItem = () => {
 
-		// const currentState = setIsComplete(isComplete);
-
 		const newTask = {
 			...task,
 			isComplete: !task.isComplete
 		}
-
-		// setIsComplete(!currentState)
 
 		updateTask(task.id, newTask, getTaskList);
 	}

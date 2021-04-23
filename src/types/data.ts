@@ -1,5 +1,3 @@
-
-
 export interface Task {
 	id: number;
 	text: string;
@@ -14,7 +12,7 @@ export interface NewTask {
 }
 
 export interface User {
-	id: number,
+	id?: number,
 	login: string,
 	password: string
 }
