@@ -12,11 +12,12 @@ const CreateTask: React.FC = observer(() =>  {
 
 	return(
 		<div className="create-new">
-			<form className="create-new__form" onSubmit={onSubmit} autoComplete="off">
+			<form className="create-new__form" onSubmit={onSubmit} autoComplete="off" data-testid="form">
 				<input 
-					className="create-new__input form-control" 
+					className="create-new__input form-control image" 
 					name="text" 
-					type="text" required
+					type="text" 
+					required
 					placeholder="Купить билеты в Японию"
 				/>
 				<button className="create-new__button btn btn-success" type="submit">Добавить</button>

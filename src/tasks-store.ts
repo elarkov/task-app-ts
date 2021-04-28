@@ -64,8 +64,6 @@ class TasksStore {
 		this.filterTasks = this.tasks
 	}
 
- 
-
 	onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
 		evt.preventDefault();
 

@@ -3,7 +3,6 @@ import {User} from '../types/data';
 const getUsers = async(): Promise<any> => {
 	const response = await fetch('http://localhost:3000/users')
 	const result = await response.json();
-	console.log(typeof result);
 	return result;
 };
 

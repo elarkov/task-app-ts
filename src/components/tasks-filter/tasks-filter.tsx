@@ -3,8 +3,6 @@ import React from 'react';
 import { observer } from "mobx-react-lite";
 import { tasksStore } from "../../tasks-store";
 
-import './tasks-filter.css';
-
 
 const TasksFilter: React.FC = observer(() => {
 

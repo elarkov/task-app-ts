@@ -80,7 +80,7 @@ const TaskItem: React.FC<TaskItemProps> = observer(({task}) => {
 
 		return (
 			<>
-				<span className="list-item__text" style={styleLineThough}>
+				<span data-testid={`task-${task.id}`} className="list-item__text" style={styleLineThough}>
 					{task.text}
 				</span>
 				
