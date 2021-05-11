@@ -1,50 +1,36 @@
 import {Task, NewTask} from '../types/data';
 
+import {firestore} from '../index';
+
 /**Делаем запрос к серверу */
-const getTasks = async (): Promise<any> => {
-	const response = await fetch('http://localhost:3000/tasks');
-	const res = await response.json();
-	return res;
+const getTasks = (cb: {(): void}): void => {
+	firestore.ref('tasks').once('value', (snapshot) => {
+		const data = snapshot.val();
+		cb(data);
+	});
 };
 
 /*Добавляем заметку в БД*/
-const addTask = (formData: NewTask, onSuccess: { (): void; }): void => {
-	fetch('http://localhost:3000/tasks', 
-	{
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(formData),
-	}).then((response) => {
-		if(response.ok) {
-			onSuccess();
-		}
-	});
+const addTask = (formData: NewTask|null|undefined, onSuccess: { (): void; }): void => {
+	firestore.ref('tasks').push(
+		formData
+	).then(()=> {
+		onSuccess();
+	})
 }
 
 /**Обновляем заметку в БД после редактирования */
 const updateTask = (id: number, formData: Task, onDone: { (): void; }): void => {
-	fetch('http://localhost:3000/tasks/' + id, {
-		method: 'PUT',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(formData)
-	}).then((response) => {
-		if(response.ok){
-			onDone();
-		}
+	firestore.ref('tasks/' + id).set(
+		formData
+	).then(() => {
+		onDone();
 	})
 }
 
 /**Удаляем заметку из БД */
 const deleteTask = (id: number): void => {
-	fetch('http://localhost:3000/tasks/' + id, {
-		method: 'DELETE'
-	}).then(res => {
-		console.log(res.statusText);
-	})
+	firestore.ref('tasks/' + id).remove();
 };
 
 

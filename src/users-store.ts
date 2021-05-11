@@ -7,9 +7,15 @@ import {User} from './types/data';
 
 class UsersStore {
 	currentUser = null
+	idUser = '';
 
 	constructor() {
 		makeAutoObservable(this);
+	}
+
+	setIdUser = (id:string) => {
+		this.idUser = id;
+		localStorage.setItem('user_id', id);
 	}
 
 	getListUsers = () => {

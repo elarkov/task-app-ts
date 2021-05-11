@@ -17,16 +17,24 @@ class TasksStore {
 	}
 
 	getTaskList = (): void => {
-		const id = localStorage.getItem('user_id');
+		getTasks(this.setTasks);
+	}
 
-		getTasks()
-		.then((tasks) => {
-			const items = tasks.filter((task: Task) => task.user_id === Number(id));
+	setTasks = (tasks) => {
+		this.tasks = Object.keys(tasks).map((id) => {
+			return {
+				...tasks[id], 
+				id
+			}
+		});
 
-			this.tasks = items
-			this.filterTasks = items
-			
-		})
+		this.filterTasks = Object.keys(tasks).map((id) => {
+			return {
+				...tasks[id], 
+				id
+			}
+		});
+		
 	}
 
 	searchQueryItem = (queryText:string): void => {
@@ -54,14 +62,17 @@ class TasksStore {
 
 	handleSortTasksDone = (): void => {
 		this.filterTasks = this.tasks.filter((item: Task) => item.isComplete === true)
+		console.log(this.filterTasks)
 	}
 
 	handleSortTaskUnComplete = (): void => {
 		this.filterTasks = this.tasks.filter((item: Task) => item.isComplete === false)
+		console.log(this.filterTasks)
 	}
 
 	handleSortTasksAll = (): void => {
 		this.filterTasks = this.tasks
+
 	}
 
 	onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
@@ -71,7 +82,7 @@ class TasksStore {
 		
 		const newTask = {
 			text: (evt.target as any).elements.text.value,
-			user_id: Number(id),
+			user_id: id,
 			isComplete: false
 		}
 		

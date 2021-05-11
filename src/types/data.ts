@@ -7,7 +7,7 @@ export interface Task {
 
 export interface NewTask {
 	text: any,
-	user_id: number,
+	user_id: string,
 	isComplete: boolean
 }
 

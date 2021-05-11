@@ -38,7 +38,7 @@ const TaskItem: React.FC<TaskItemProps> = observer(({task}) => {
 		const newTask = {
 			id: task.id,
 			text: (evt.target as any).parentElement.elements.text.value,
-			user_id: Number(idUser),
+			user_id: idUser,
 			isComplete: false
 		};
 		

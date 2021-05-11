@@ -14,11 +14,13 @@
     "@babel/runtime": "^7.13.10",
     "@testing-library/user-event": "^13.1.5",
     "csstype": "^3.0.8",
+    "firebase": "^8.4.2",
     "history": "^5.0.0",
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-firebase-hooks": "^3.0.4",
     "react-router-dom": "^4.1.1",
     "react-scripts": "^4.0.3"
   },
@@ -56,7 +58,7 @@
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
-	"jest": {
+  "jest": {
     "collectCoverage": true
   }
 }

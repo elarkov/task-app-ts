@@ -1,38 +1,34 @@
 import React from "react";
 
-import {Router, Switch, Route} from '../../router';
+// import {Router, Switch, Route} from '../../router';
 
-import history from '../../history';
-import PrivateRoute from '../../private-route';
+import {BrowserRouter, Route} from 'react-router-dom';
+
+//import history from '../../history';
+//import PrivateRoute from '../../private-route';
 
 import Dashboard from '../../pages/dashboard';
 import Registr from '../../pages/registr';
 import Login from '../../pages/login';
+import AppRouter from "../appRouter/app-router";
+
 
 
 
 const App: React.FC = () => {
-
-	return (
-		<Router history={history}>
+	const user = false;
+	return ( 
+		<BrowserRouter>
 			<div className="wrapper">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12">
-							<Switch>
-								<PrivateRoute exact path="/" component={Dashboard} />
-								<Route exact path="/registr">
-									<Registr/>
-								</Route>
-								<Route exact path="/login">
-									<Login/>
-								</Route>
-							</Switch>
+							<AppRouter/>
 						</div>
 					</div>
 				</div>
 			</div>
-		</Router>
+		</BrowserRouter>
 	)
 };
 
