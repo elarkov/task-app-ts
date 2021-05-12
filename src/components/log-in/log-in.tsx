@@ -20,19 +20,18 @@ const LogIn = observer(() => {
 		const {user} = await auth.signInWithPopup(provider);
 
 		setIdUser(user.uid);
-		
-		//console.log(user.displayName);
+
 	}
 	
-
 	return (
-		<form className="login-form" onSubmit={onSubmit} autoComplete="off">
-			{/* <input type="text" name="user" placeholder="Введите имя" required/>
-			<input type="password" name="pass" placeholder="Введите пароль" required/> */}
-			<div className="login-form__bottom">
-				<button className="login-form__btn btn btn-secondary" type="submit" onClick={login}>Войти</button>
-			</div>
-		</form>
+		<div className="card text-white bg-primary mb-3 mt-5">
+			<h1 className="card-header text-center">Авторизируйтесь</h1>
+			<form className="login-form" onSubmit={onSubmit} autoComplete="off">
+				<div className="login-form__bottom">
+					<button className="login-form__btn btn btn-secondary" type="submit" onClick={login}>Войти</button>
+				</div>
+			</form>
+		</div>
 	)
 });
 

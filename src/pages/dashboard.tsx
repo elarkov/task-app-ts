@@ -9,10 +9,6 @@ import { observer } from "mobx-react-lite";
 
 /**import stores for mobx */
 import { tasksStore } from "../tasks-store";
-import { usersStore } from '../users-store';
-
-/**import server requests */
-//import { addTask } from '../api/server';
 
 /**import components */
 import TasksSearch from '../components/tasks-search/tasks-search';
@@ -29,25 +25,15 @@ const Dashboard: React.FC = observer(() => {
 	const {auth} = useContext(Context);
 	const [user] = useAuthState(auth);
 
-
 	/** destructuring methods and properties from store tasks-store.js*/
 	const {
 		getTaskList,
-		tasks
 	} = tasksStore;
-
-	/** destructuring methods and properties from store users-store.js*/
-	// const {currentUser, getListUsers} = usersStore;
 
 	/**hook a method from tasks-store.js */
 	useEffect(() => {
 		getTaskList()
 	}, []);
-
-	/**hook a method from users-store.js */
-	// useEffect(() => {
-	// 	getListUsers()
-	// });
 
 	
 
