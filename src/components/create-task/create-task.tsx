@@ -1,15 +1,31 @@
 import React from 'react';
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store";
+import { tasksStore } from "../../store/tasks-store";
+import { addTask } from '../../api/server';
 
 import './create-task.css';
 
 
 const CreateTask: React.FC = observer(() =>  {
 
-	const {onSubmit} = tasksStore;
+	const {getTaskList} = tasksStore;
 
+	const onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
+		evt.preventDefault();
+
+		const id = localStorage.getItem('user_id') || '0';
+		
+		const newTask = {
+			text: (evt.target as any).elements.text.value,
+			user_id: id,
+			isComplete: false
+		}
+		
+		addTask(newTask, getTaskList);
+		(evt.target as any).reset();
+	}
+	
 	return(
 		<div className="create-new">
 			<form className="create-new__form" onSubmit={onSubmit} autoComplete="off" data-testid="form">

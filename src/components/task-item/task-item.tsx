@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store";
-
+import { tasksStore } from "../../store/tasks-store";
 import {updateTask, deleteTask } from '../../api/server';
 
 import './task-item.css';
@@ -33,7 +32,7 @@ const TaskItem: React.FC<TaskItemProps> = observer(({task}) => {
 	const handleSave: React.MouseEventHandler = (evt) => {
 		evt.preventDefault();
 
-		const idUser = localStorage.getItem('user_id');
+		const idUser = localStorage.getItem('user_id')!;
 
 		const newTask = {
 			id: task.id,

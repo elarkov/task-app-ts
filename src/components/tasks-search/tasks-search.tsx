@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../tasks-store";
+import { tasksStore } from "../../store/tasks-store";
 
 import './tasks-search.css';
 
 
 const TasksSearch: React.FC = observer(() => {
 
-	const {searchItem} = tasksStore;
+	const {setQueryText} = tasksStore;
 
 	return (
 		<div className="from-search form-inline my-2 my-lg-0">
@@ -19,7 +19,7 @@ const TasksSearch: React.FC = observer(() => {
 			<input 
 				className="form-search__input form-control mr-sm-2" 
 				type="search" 
-				onChange={searchItem} 
+				onChange={(evt) => setQueryText(evt.target.value)}
 				placeholder="Поиск"
 			/>
 		</div>

@@ -18,10 +18,13 @@ firebase.initializeApp(
 	}
 );
 
-export const Context = createContext(null);
-
 const auth = firebase.auth();
 export const firestore = firebase.database();
+export const Context = createContext({
+	firebase,
+	auth,
+	firestore
+});
 
 
 ReactDom.render(

@@ -2,9 +2,12 @@ import {Task, NewTask} from '../types/data';
 
 import {firestore} from '../index';
 
+
 /**Делаем запрос к серверу */
-const getTasks = (cb: {(): void}): void => {
-	firestore.ref('tasks').once('value', (snapshot) => {
+const getTasks = (cb: { (tasks: { [x: string]: Task; }): void}): void => {
+	const userId = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : '0';
+
+	firestore.ref('tasks').orderByChild('user_id').equalTo(userId).once('value', (snapshot) => {
 		const data = snapshot.val();
 		cb(data);
 	});

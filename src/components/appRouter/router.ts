@@ -1,6 +1,6 @@
-import {DASHBOARD, LOGIN_ROUTE} from './utils/consts';
-import Login from './components/log-in/log-in';
-import Dashboard from './pages/dashboard';
+import {DASHBOARD, LOGIN_ROUTE} from '../../utils/consts';
+import Login from '../log-in/log-in';
+import Dashboard from '../../pages/dashboard';
 
 export const publicRoutes = [
 	{

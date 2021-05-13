@@ -12,10 +12,6 @@ class UsersStore {
 		localStorage.setItem('user_id', id);
 	}
 
-	onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
-		evt.preventDefault();
-	}
-
 }
 
 const usersStore = new UsersStore();

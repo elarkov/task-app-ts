@@ -8,7 +8,7 @@ import {Context} from '../index';
 import { observer } from "mobx-react-lite";
 
 /**import stores for mobx */
-import { tasksStore } from "../tasks-store";
+import { tasksStore } from "../store/tasks-store";
 
 /**import components */
 import TasksSearch from '../components/tasks-search/tasks-search';
