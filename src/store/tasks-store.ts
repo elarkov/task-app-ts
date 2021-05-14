@@ -36,12 +36,7 @@ class TasksStore {
 	get filterTasks() {
 
 		const tasks = this.filterMark === FilterMarks.All ? this.tasks : this.tasks.filter((task: Task) => task.isComplete === completeStatus[this.filterMark])
-
-		// const tasks = (this.filterMark === FilterMarks.All) ? 
-		// this.tasks : (this.filterMark === FilterMarks.Uncomplete ? this.tasks.filter((item: Task) => item.isComplete === false) 
-		// : this.tasks.filter((item: Task) => item.isComplete === true));
 		
-
 		if(this.queryText) {
 			return this.tasks.filter((task: Task) => task.text.toLowerCase().includes(this.queryText.toLowerCase())) 
 		}
