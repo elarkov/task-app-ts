@@ -2,13 +2,19 @@ import React from 'react';
 
 import { observer } from "mobx-react-lite";
 import { tasksStore } from "../../store/tasks-store";
+import {FilterMarks} from '../../types/data';
 
 import './tasks-search.css';
 
 
 const TasksSearch: React.FC = observer(() => {
 
-	const {setQueryText} = tasksStore;
+	const {setQueryText, setFilterMark} = tasksStore;
+
+	const handleChange = (evt) => {
+		setQueryText(evt.target.value);
+		setFilterMark(FilterMarks.All)
+	}
 
 	return (
 		<div className="from-search form-inline my-2 my-lg-0">
@@ -19,7 +25,7 @@ const TasksSearch: React.FC = observer(() => {
 			<input 
 				className="form-search__input form-control mr-sm-2" 
 				type="search" 
-				onChange={(evt) => setQueryText(evt.target.value)}
+				onChange={handleChange}
 				placeholder="Поиск"
 			/>
 		</div>

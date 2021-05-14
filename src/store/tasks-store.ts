@@ -1,12 +1,18 @@
 import { makeAutoObservable } from "mobx";
 import { getTasks } from '../api/server';
 
-import { Task } from '../types/data';
+import { Task, FilterMarks } from '../types/data';
+
+const completeStatus = {
+	all: true,
+	uncomplete: false,
+	complete: true
+};
 
 class TasksStore {
 
 	tasks: any[] = [];
-	filterMark = 'all';
+	filterMark = FilterMarks.All;
 	queryText = '';
 
 	constructor() {
@@ -28,32 +34,25 @@ class TasksStore {
 	}
 
 	get filterTasks() {
-		if(this.queryText && this.filterMark === 'all') {
+
+		const tasks = this.filterMark === FilterMarks.All ? this.tasks : this.tasks.filter((task: Task) => task.isComplete === completeStatus[this.filterMark])
+
+		// const tasks = (this.filterMark === FilterMarks.All) ? 
+		// this.tasks : (this.filterMark === FilterMarks.Uncomplete ? this.tasks.filter((item: Task) => item.isComplete === false) 
+		// : this.tasks.filter((item: Task) => item.isComplete === true));
+		
+
+		if(this.queryText) {
 			return this.tasks.filter((task: Task) => task.text.toLowerCase().includes(this.queryText.toLowerCase())) 
 		}
-		if(this.queryText && this.filterMark === 'uncomplete') {
-			return this.tasks.filter((task: Task) => task.text.toLowerCase().includes(this.queryText.toLowerCase()) && task.isComplete === false) 
+			return tasks;
 		}
-		if(this.queryText && this.filterMark === 'complete') {
-			return this.tasks.filter((task: Task) => task.text.toLowerCase().includes(this.queryText.toLowerCase()) && task.isComplete === true) 
-		}
-		if(this.filterMark === 'all') {
-			return this.tasks
-		}
-		if(this.filterMark === 'uncomplete') {
-			return this.tasks.filter((item: Task) => item.isComplete === false)
-		}
-		if(this.filterMark === 'complete') {
-			return this.tasks.filter((item: Task) => item.isComplete === true)
-		}
-		return this.tasks;
-	}
 
 	removeItem = (id:number): void => {
 		this.tasks = this.tasks.filter((item: Task) => item.id !== id)
 	}
 
-	setFilterMark = (filterMark: string) => {
+	setFilterMark = (filterMark: FilterMarks) => {
 		this.filterMark = filterMark;
 	}
 

@@ -10,3 +10,9 @@ export interface NewTask {
 	user_id: string,
 	isComplete: boolean
 }
+
+export enum FilterMarks {
+	All = 'all',
+	Uncomplete = 'uncomplete',
+	Complete = 'complete'
+}

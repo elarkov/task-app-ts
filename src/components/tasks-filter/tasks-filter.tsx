@@ -1,35 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import { observer } from "mobx-react-lite";
 import { tasksStore } from "../../store/tasks-store";
+import {FilterMarks} from '../../types/data';
 
 
 const TasksFilter: React.FC = observer(() => {
 
-	const {setFilterMark} = tasksStore;
-
-	const [activeIndex, setActiveIndex] = useState(0);
+	const {setFilterMark, filterMark} = tasksStore;
 
 	const handleAll = () => {
-		setFilterMark('all');
-		setActiveIndex(0);
+		setFilterMark(FilterMarks.All);
 	};
 
 	const handleUncomplete = () => {
-		setFilterMark('uncomplete');
-		setActiveIndex(1);
+		setFilterMark(FilterMarks.Uncomplete);
 	};
 
 	const handleComplete = () => {
-		setFilterMark('complete');
-		setActiveIndex(2);
+		setFilterMark(FilterMarks.Complete);
 	}
 
 	return (
 		<div className="ml-sm-2">
-			<button className={`btn btn-light ${activeIndex === 0 ? 'active' : ''}`} onClick={handleAll}>Все</button>
-			<button className={`btn btn-light ${activeIndex === 1 ? 'active' : ''}`} onClick={handleUncomplete}>Открытые</button>
-			<button className={`btn btn-light ${activeIndex === 2 ? 'active' : ''}`} onClick={handleComplete}>Завершенные</button>
+			<button className={`btn btn-light ${filterMark === FilterMarks.All ? 'active' : ''}`} onClick={handleAll}>Все</button>
+			<button className={`btn btn-light ${filterMark === FilterMarks.Uncomplete ? 'active' : ''}`} onClick={handleUncomplete}>Открытые</button>
+			<button className={`btn btn-light ${filterMark === FilterMarks.Complete ? 'active' : ''}`} onClick={handleComplete}>Завершенные</button>
 		</div>
 	)
 });
